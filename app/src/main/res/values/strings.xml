@@ -19,4 +19,12 @@
     <string name="title_notifications">Notifications</string>
     <string name="reviews">Reviews</string>
     <string name="profile">Profile</string>
+    <string name="welcome_to_sea_salon_app">Welcome to SEA Salon App</string>
+    <string name="name_dummy">Muhammad Ibra Alfathar</string>
+    <string name="dummy_services">Manicure and Pedicure</string>
+    <string name="duration_per_session">Duration per session</string>
+    <string name="duration">60</string>
+    <string name="minute">Minute</string>
+    <string name="hi">Hi!</string>
+    <string name="our_service">Our Service</string>
 </resources>

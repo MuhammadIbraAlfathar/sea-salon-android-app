@@ -7,9 +7,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.seasalonapp.R
 import com.example.seasalonapp.databinding.FragmentHomeBinding
 import com.example.seasalonapp.presentation.adapter.ImageSlideAdapter
+import com.example.seasalonapp.presentation.adapter.Service
+import com.example.seasalonapp.presentation.adapter.ServiceAdapter
 
 @Suppress("UNREACHABLE_CODE")
 class HomeFragment : Fragment() {
@@ -37,6 +40,17 @@ class HomeFragment : Fragment() {
         binding.viewPager.adapter = adapter
 
         binding.dotsIndicator.attachTo(binding.viewPager)
+        binding.toolBar.toolbar.visibility = View.GONE
+
+
+        val services = listOf(
+            Service(R.drawable.img_2,"Facial Treatments" ,"30"),
+            Service(R.drawable.manicure_pedicure, "Manicure and Pedicure", "45"),
+            Service(R.drawable.haircut,"Haircuts and Styling", "60")
+        )
+
+        binding.rcList.layoutManager = LinearLayoutManager(context)
+        binding.rcList.adapter = ServiceAdapter(services)
         return root
     }
 

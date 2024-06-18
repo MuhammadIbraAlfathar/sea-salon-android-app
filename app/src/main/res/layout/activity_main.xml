@@ -7,22 +7,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/toolbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?attr/actionBarSize"-->
+<!--        android:layout_marginHorizontal="10dp"-->
+<!--        android:background="@color/white"-->
+<!--        app:title="@string/app_name"-->
+<!--        tools:ignore="MissingConstraints" />-->
+
+    <include
+        android:id="@+id/toolBar"
+        layout="@layout/layout_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_marginHorizontal="10dp"
-        android:background="@color/white"
-        app:title="@string/app_name"
-        tools:ignore="MissingConstraints" />
+        android:layout_height="wrap_content"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="53dp"
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
-        android:background="?android:attr/windowBackground"
+        android:background="#FFF"
+        app:labelVisibilityMode="unlabeled"
+        app:itemIconTint="@drawable/bottom_nav_icon_color_selector"
+        app:itemTextColor="@drawable/bottom_nav_icon_color_selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
