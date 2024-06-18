@@ -10,4 +10,7 @@
     <string name="password">Password</string>
     <string name="hint_password">Masukan password anda</string>
     <string name="register">Register</string>
+    <string name="sign_in">Sign In</string>
+    <string name="hi_welcome_back_you_ve_been_missed">Hi! Welcome back, you\'ve been missed</string>
+    <string name="don_t_have_an_account_yet_please_register">Don\'t have an account yet? Please register!</string>
 </resources>
