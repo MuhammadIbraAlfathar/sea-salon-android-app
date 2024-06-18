@@ -4,4 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="primary">#39447d</color>
     <color name="grey">#EEEEEE</color>
+    <color name="dots_active">#3F51B5</color>
+    <color name="dots_inactive">#C5CAE9</color>
 </resources>
