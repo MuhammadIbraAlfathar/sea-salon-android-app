@@ -13,6 +13,10 @@
         android:theme="@style/Theme.SeaSalonApp"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.activity.main.MainActivity"
+            android:exported="false"
+            android:label="@string/title_activity_main" />
+        <activity
             android:name=".presentation.activity.auth.LoginActivity"
             android:exported="false" />
         <activity
@@ -27,9 +31,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
     </application>
 
 </manifest>

@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.SeaSalonApp" parent="Base.Theme.SeaSalonApp" />
+
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    </style>
 </resources>

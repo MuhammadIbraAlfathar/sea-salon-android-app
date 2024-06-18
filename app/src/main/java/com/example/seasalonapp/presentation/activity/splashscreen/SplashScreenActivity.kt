@@ -8,7 +8,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.seasalonapp.R
 import com.example.seasalonapp.presentation.activity.auth.LoginActivity
-import com.example.seasalonapp.presentation.activity.auth.RegisterActivity
 
 @SuppressLint("CustomSplashScreen")
 @Suppress("DEPRECATION")
