@@ -12,8 +12,16 @@
         android:title="@string/reviews" />
 
     <item
+        android:id="@+id/navigation_history"
+        android:icon="@drawable/history_drawable"
+        android:title="History" />
+
+    <item
         android:id="@+id/navigation_profile"
         android:icon="@drawable/baseline_account_box_24"
         android:title="@string/profile" />
+
+
+
 
 </menu>

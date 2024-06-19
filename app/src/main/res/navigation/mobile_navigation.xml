@@ -22,4 +22,10 @@
         android:name="com.example.seasalonapp.presentation.activity.main.ui.profile.ProfileFragment"
         android:label="@string/profile"
         tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/navigation_history"
+        android:name="com.example.seasalonapp.presentation.activity.main.ui.history.HistoryFragment"
+        android:label="History"
+        tools:layout="@layout/fragment_history" />
 </navigation>
