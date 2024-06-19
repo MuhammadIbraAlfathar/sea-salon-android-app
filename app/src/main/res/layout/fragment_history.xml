@@ -16,13 +16,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_bold"
-            android:text="SEA Salon Branch"
+            android:text="History"
             android:textColor="@color/primary"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="40dp"
             android:textSize="26sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_sea_resv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Reservation"
+            android:textColor="@color/primary"
+            android:textSize="26sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_sea"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rc_list"
@@ -31,9 +43,9 @@
             android:layout_marginEnd="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="50dp"
-            app:layout_constraintTop_toBottomOf="@+id/tv_sea"
-            android:layout_marginTop="20dp"
-            tools:listitem="@layout/item_branch_salon"/>
+            app:layout_constraintTop_toBottomOf="@+id/tv_sea_resv"
+            android:layout_marginTop="40dp"
+            tools:listitem="@layout/item_history_reservation"/>
 
 
 

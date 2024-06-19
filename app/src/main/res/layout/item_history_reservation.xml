@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="4dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_history_service"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginVertical="8dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
+
+
+        <TextView
+            android:id="@+id/tv_name_salon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SEA Salon"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/poppins_medium"
+            app:layout_constraintStart_toEndOf="@id/iv_history_service"
+            app:layout_constraintTop_toTopOf="@id/iv_history_service"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/tv_service"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:textSize="12sp"
+            android:text="Service :"
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintTop_toBottomOf="@id/tv_name_salon"
+            app:layout_constraintStart_toStartOf="@id/tv_name_salon" />
+
+        <TextView
+            android:id="@+id/service_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:layout_marginStart="4dp"
+            android:text="Haircut and stylish"
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintTop_toTopOf="@id/tv_service"
+            app:layout_constraintBottom_toBottomOf="@id/tv_service"
+            app:layout_constraintStart_toEndOf="@id/tv_service" />
+
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="12sp"
+            android:text="Date :"
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintTop_toBottomOf="@id/tv_service"
+            app:layout_constraintStart_toStartOf="@id/tv_service"
+             />
+
+        <TextView
+            android:id="@+id/date_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:layout_marginStart="4dp"
+            android:text="2024-6-19"
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintTop_toTopOf="@id/tv_date"
+            app:layout_constraintBottom_toBottomOf="@id/tv_date"
+            app:layout_constraintStart_toEndOf="@id/tv_date" />
+
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="12sp"
+            android:text="Time :"
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintTop_toBottomOf="@id/tv_date"
+            app:layout_constraintStart_toStartOf="@id/tv_date"
+            />
+
+
+        <TextView
+            android:id="@+id/time_start_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:layout_marginStart="4dp"
+            android:text="19:00"
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintTop_toTopOf="@id/tv_time"
+            app:layout_constraintBottom_toBottomOf="@id/tv_time"
+            app:layout_constraintStart_toEndOf="@id/tv_time" />
+
+        <TextView
+            android:id="@+id/strip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:layout_marginStart="4dp"
+            android:text="-"
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintTop_toTopOf="@id/time_start_history"
+            app:layout_constraintBottom_toBottomOf="@id/time_start_history"
+            app:layout_constraintStart_toEndOf="@id/time_start_history" />
+
+        <TextView
+            android:id="@+id/time_end_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:layout_marginStart="4dp"
+            android:text="20:00"
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintTop_toTopOf="@id/strip"
+            app:layout_constraintBottom_toBottomOf="@id/strip"
+            app:layout_constraintStart_toEndOf="@id/strip" />
+
+
+        <TextView
+            android:id="@+id/tv_created"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="4dp"
+            android:text="2024-5-18"
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
