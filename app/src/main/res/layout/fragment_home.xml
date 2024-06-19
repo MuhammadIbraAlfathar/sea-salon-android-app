@@ -68,10 +68,30 @@
         <Button
             android:id="@+id/reservation_button"
             android:layout_width="131dp"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button"
             app:layout_constraintTop_toBottomOf="@id/tv_make_reservation"
             app:layout_constraintStart_toStartOf="@id/tv_make_reservation"
             android:layout_height="40dp"
             android:text="@string/reservation" />
+
+        <TextView
+            android:id="@+id/tv_find_branch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_medium"
+            app:layout_constraintTop_toBottomOf="@id/reservation_button"
+            app:layout_constraintStart_toStartOf="@id/tv_welcome"
+            android:text="Find our salon branchs!!"/>
+
+        <Button
+            android:id="@+id/branchs_button"
+            android:layout_width="131dp"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button"
+            app:layout_constraintTop_toBottomOf="@id/tv_find_branch"
+            app:layout_constraintStart_toStartOf="@id/tv_find_branch"
+            android:layout_height="40dp"
+            android:text="@string/branch_salon" />
 
 
 
@@ -83,7 +103,7 @@
             android:layout_marginTop="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/reservation_button" />
+            app:layout_constraintTop_toBottomOf="@+id/branchs_button" />
 
 
         <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator

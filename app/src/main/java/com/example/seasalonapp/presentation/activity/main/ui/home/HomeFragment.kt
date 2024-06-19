@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.seasalonapp.R
 import com.example.seasalonapp.databinding.FragmentHomeBinding
+import com.example.seasalonapp.presentation.activity.branch_salon.BranchSalonActivity
 import com.example.seasalonapp.presentation.activity.reservation.ReservationActivity
 import com.example.seasalonapp.presentation.adapter.ImageSlideAdapter
 import com.example.seasalonapp.presentation.adapter.Service
@@ -59,6 +60,11 @@ class HomeFragment : Fragment() {
 
         binding.reservationButton.setOnClickListener {
             val intent = Intent(activity, ReservationActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.branchsButton.setOnClickListener {
+            val intent = Intent(activity, BranchSalonActivity::class.java)
             startActivity(intent)
         }
 

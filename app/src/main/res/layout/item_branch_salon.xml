@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="4dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/iv_branch_salon"
+            android:layout_width="147dp"
+            android:layout_height="178dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginVertical="4dp"
+            android:contentDescription="image_branch"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tv_name_salon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Salon XYZ"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_branch_salon"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="199dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textSize="12sp"
+            android:text="Jl. May. Jen. DI. Panjaitan No.23, Cipinang Besar Sel., Kecamatan Jatinegara, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13340"
+            android:textAlignment="textStart"
+            app:layout_constraintStart_toEndOf="@+id/iv_branch_salon"
+            app:layout_constraintTop_toBottomOf="@id/tv_name_salon" />
+
+        <TextView
+            android:id="@+id/tv_opening_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Opening Time"
+            app:layout_constraintStart_toStartOf="@id/tv_address"
+            app:layout_constraintTop_toBottomOf="@id/tv_address" />
+
+        <TextView
+            android:id="@+id/tv_closing_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Closing Time"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toEndOf="@id/tv_opening_time"
+            app:layout_constraintTop_toBottomOf="@id/tv_address" />
+
+        <ImageView
+            android:id="@+id/iv_time_opening"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/time_drawable"
+            app:layout_constraintTop_toBottomOf="@id/tv_opening_time"
+            app:layout_constraintStart_toStartOf="@id/tv_opening_time"/>
+
+        <TextView
+            android:id="@+id/time_opening"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@id/iv_time_opening"
+            app:layout_constraintTop_toTopOf="@id/iv_time_opening"
+            android:text="09:00"/>
+
+        <ImageView
+            android:id="@+id/iv_closing_opening"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/time_drawable"
+            app:layout_constraintTop_toBottomOf="@id/tv_closing_time"
+            app:layout_constraintStart_toStartOf="@id/tv_closing_time"/>
+
+
+        <TextView
+            android:id="@+id/time_closing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@id/iv_closing_opening"
+            app:layout_constraintTop_toTopOf="@id/iv_closing_opening"
+            android:text="09:00"/>
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

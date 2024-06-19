@@ -5,56 +5,46 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.seasalonapp.R
+import com.example.seasalonapp.databinding.FragmentHistoryBinding
+import com.example.seasalonapp.databinding.FragmentHomeBinding
+import com.example.seasalonapp.presentation.adapter.BranchSalon
+import com.example.seasalonapp.presentation.adapter.BranchSalonAdapter
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [HistoryFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HistoryFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentHistoryBinding? = null
+
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_history, container, false)
+        _binding = FragmentHistoryBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+
+        return root
+
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HistoryFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HistoryFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val branch = listOf(
+            BranchSalon(R.drawable.branch_img1, "SEA Salon A", "Jl. Otista 2 No.15 F, RT.3/RW.9, Bidara Cina, Kecamatan Jatinegara, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13330, Indonesia", "09:00", "20:00"),
+            BranchSalon(R.drawable.branch_img2, "SEA Salon B", "l. Saabun No.21 5, RT.5/RW.2, Bidara Cina, Kecamatan Jatinegara", "10:00", "22:00"),
+            BranchSalon(R.drawable.branch_img3, "SEA Salon C", "Jl. Cipinang Cempedak II Kel No.2A 11, RT.11/RW.6, Cipinang Cempedak", "08:00", "20:00")
+        )
+
+        binding.rcList.layoutManager = LinearLayoutManager(context)
+        binding.rcList.adapter = BranchSalonAdapter(branch)
     }
+
+
+
 }
