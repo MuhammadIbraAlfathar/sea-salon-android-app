@@ -10,4 +10,13 @@
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
     </style>
+
+    <style name="RatingBar">
+        <item name="colorControlNormal">#B4B4B8 </item>
+        <item name="colorControlActivated">#FFC700</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.MyApp.Button" parent="">
+        <item name="cornerSize">8dp</item>
+    </style>
 </resources>

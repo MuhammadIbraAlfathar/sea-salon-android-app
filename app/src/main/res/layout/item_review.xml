@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/reviewName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/name_dummy"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/reviewComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam porta, ipsum in sagittis imperdiet, justo urna fringilla massa, non vestibulum lacus ipsum non neque. Suspendisse eget tristique neque, vitae mollis leo. Vivamus sed enim gravida, consectetur metus quis, rhoncus felis. Aenean et lectus sed ipsum posuere pellentesque. Aenean fermentum, elit eu vehicula interdum, diam felis facilisis nisl, a interdum mauris odio quis diam. Phasellus sem nisl, cursus vel semper a, vestibulum vitae nibh. Nulla sapien risus, dictum sit amet tincidunt ac, scelerisque ut odio."
+        android:layout_marginTop="4dp" />
+
+    <RatingBar
+        android:id="@+id/reviewRatingBar"
+        android:theme="@style/RatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="1.0"
+        android:isIndicator="true"
+        android:layout_marginTop="4dp" />
+
+</LinearLayout>

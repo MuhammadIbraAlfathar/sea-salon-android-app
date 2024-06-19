@@ -6,4 +6,5 @@
     <color name="grey">#EEEEEE</color>
     <color name="dots_active">#3F51B5</color>
     <color name="dots_inactive">#C5CAE9</color>
+    <color name="red">#D71313</color>
 </resources>

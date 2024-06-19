@@ -19,6 +19,7 @@
     <string name="title_notifications">Notifications</string>
     <string name="reviews">Reviews</string>
     <string name="profile">Profile</string>
+    <string name="open_salon">We open 9.00 a.m. until 9.00 p.m.</string>
     <string name="welcome_to_sea_salon_app">Welcome to SEA Salon App</string>
     <string name="name_dummy">Muhammad Ibra Alfathar</string>
     <string name="dummy_services">Manicure and Pedicure</string>
@@ -27,4 +28,13 @@
     <string name="minute">Minute</string>
     <string name="hi">Hi!</string>
     <string name="our_service">Our Service</string>
+    <string name="your_name">Your Name</string>
+    <string name="your_comment">Your Comment</string>
+    <string name="submit">Submit</string>
+    <string name="make_reservation_in_here">Make reservation in here!!</string>
+    <string name="reservation">Reservation</string>
+    <string name="select_a_date">Select a date</string>
+    <string name="select_a_time">Select a time</string>
+    <string name="select_time_start_reservation">Select time start reservation</string>
+    <string name="select_time_end_reservation">Select time end reservation</string>
 </resources>
