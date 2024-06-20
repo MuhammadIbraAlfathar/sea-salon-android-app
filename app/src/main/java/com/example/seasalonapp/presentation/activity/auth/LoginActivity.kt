@@ -30,6 +30,12 @@ class LoginActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        val token = PreferenceHelper.getAccessToken(this).toString()
+        if (token != null) {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
         val repository = LoginRepository()
         val factory = LoginViewModelFactory(repository)
         viewModel = ViewModelProvider(this, factory).get(LoginViewModel::class.java)
