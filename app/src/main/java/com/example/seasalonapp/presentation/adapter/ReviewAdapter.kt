@@ -10,13 +10,19 @@ import com.example.seasalonapp.databinding.ItemReviewBinding
 
 
 
-class ReviewAdapter(private val review: List<Review>): RecyclerView.Adapter<ReviewAdapter.ViewHolder>() {
+class ReviewAdapter(private val review: MutableList<Review>): RecyclerView.Adapter<ReviewAdapter.ViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ):ViewHolder {
         val binding = ItemReviewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
+    }
+
+    fun updateReviews(newReviews: List<Review>) {
+        review.clear()
+        review.addAll(newReviews)
+        notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

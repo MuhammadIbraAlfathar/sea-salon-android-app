@@ -22,6 +22,8 @@ class RatingsFragment : Fragment() {
 
     private var _binding: FragmentRatingBinding? = null
     private lateinit var reviewViewModel: ReviewViewModel
+    private lateinit var reviewAdapter: ReviewAdapter
+
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -40,6 +42,8 @@ class RatingsFragment : Fragment() {
         val repository = ReviewRepository()
         val factory = ReviewModelFactory(repository)
         reviewViewModel = ViewModelProvider(this, factory)[ReviewViewModel::class.java]
+
+
 
 
         _binding = FragmentRatingBinding.inflate(inflater, container, false)
@@ -61,6 +65,10 @@ class RatingsFragment : Fragment() {
         val name = PreferenceHelper.getUser(requireContext())?.name
         val id_user = PreferenceHelper.getUser(requireContext())?.id
         val token = PreferenceHelper.getAccessToken(requireContext()).toString()
+
+        binding.reviewsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        reviewAdapter = ReviewAdapter(mutableListOf())
+        binding.reviewsRecyclerView.adapter = reviewAdapter
 
         binding.submitButton.setOnClickListener {
 
@@ -88,8 +96,7 @@ class RatingsFragment : Fragment() {
         }
 
         reviewViewModel.reviews.observe(viewLifecycleOwner, Observer { reviews ->
-            binding.reviewsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-            binding.reviewsRecyclerView.adapter = ReviewAdapter(reviews)
+            reviewAdapter.updateReviews(reviews)
         })
 
         reviewViewModel.loadViewModel(token)

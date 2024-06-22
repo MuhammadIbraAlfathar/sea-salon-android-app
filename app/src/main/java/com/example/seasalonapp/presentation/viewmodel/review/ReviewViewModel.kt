@@ -20,6 +20,7 @@ class ReviewViewModel(private val repository: ReviewRepository): ViewModel() {
         viewModelScope.launch {
             try {
                 repository.submitReview(token, reviewRequest)
+                loadViewModel(token)
             } catch (e: Exception) {
                 Log.d("ERROR_SUBMIT_REVIEW", e.message.toString())
             }
@@ -30,7 +31,7 @@ class ReviewViewModel(private val repository: ReviewRepository): ViewModel() {
         viewModelScope.launch {
             try {
                 val response = repository.getReviews(token)
-                _reviews.postValue(response.data.reviews)
+                _reviews.postValue(response.data.reviews.toMutableList())
             } catch (e: Exception) {
                 Log.d("ERROR_GET_REVIEW", e.message.toString())
             }
