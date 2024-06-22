@@ -10,7 +10,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.bumptech.glide.Glide
 import com.example.seasalonapp.R
+import com.example.seasalonapp.data.model.response.mainservice.Services
 import com.example.seasalonapp.databinding.ActivityLoginBinding
 import com.example.seasalonapp.databinding.ActivityReservationBinding
 import java.util.Calendar
@@ -18,6 +20,7 @@ import java.util.Calendar
 class ReservationActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityReservationBinding
+    private var dataService: Services? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,11 +33,22 @@ class ReservationActivity : AppCompatActivity() {
             insets
         }
 
-        val branchNames = arrayOf("Branch 1", "Branch 2", "Branch 3", "Branch 4")
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, branchNames)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        dataService = intent.getParcelableExtra("dataService")
 
-        binding.spinnerBranch.adapter = adapter
+        dataService.let {
+            Glide.with(this)
+                .load(it?.picturePath)
+                .into(binding.ivServices)
+
+            binding.tvServiceName.text = it?.services_name
+            binding.tvDuration.text = it?.duration.toString()
+        }
+
+//        val branchNames = arrayOf("Branch 1", "Branch 2", "Branch 3", "Branch 4")
+//        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, branchNames)
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+//
+//        binding.spinnerBranch.adapter = adapter
 
         binding.btnDatePicker.setOnClickListener {
             val calendar = Calendar.getInstance()

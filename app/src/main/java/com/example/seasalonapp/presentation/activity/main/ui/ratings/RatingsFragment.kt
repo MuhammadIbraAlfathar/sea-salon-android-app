@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.example.seasalonapp.databinding.FragmentRatingBinding
+import com.example.seasalonapp.helper.PreferenceHelper
 import com.example.seasalonapp.presentation.adapter.Review
 import com.example.seasalonapp.presentation.adapter.ReviewAdapter
 
@@ -48,18 +49,21 @@ class RatingsFragment : Fragment() {
         binding.reviewsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.reviewsRecyclerView.adapter = ReviewAdapter(reviewsList)
 
+        val name = PreferenceHelper.getUser(requireContext())?.name
+
         binding.submitButton.setOnClickListener {
-            val name = binding.nameInput.text.toString()
+
             val comment = binding.commentInput.text.toString()
             val rating = binding.ratingBar.rating
 
-            if (name.isNotEmpty() && comment.isNotEmpty()) {
-                reviewsList.add(Review(name, comment, rating))
-                binding.reviewsRecyclerView.adapter?.notifyDataSetChanged()
 
-                binding.nameInput.text.clear()
-                binding.commentInput.text.clear()
-                binding.ratingBar.rating = 0f
+            if (name != null) {
+                if (name.isNotEmpty() && comment.isNotEmpty()) {
+                    reviewsList.add(Review(name, comment, rating))
+                    binding.reviewsRecyclerView.adapter?.notifyDataSetChanged()
+                    binding.commentInput.text.clear()
+                    binding.ratingBar.rating = 0f
+                }
             }
         }
     }

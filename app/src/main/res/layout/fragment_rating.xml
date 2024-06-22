@@ -12,35 +12,55 @@
         android:orientation="vertical"
         android:padding="8dp">
 
-
-        <RatingBar
-            android:id="@+id/ratingBar"
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:theme="@style/RatingBar"
-            android:numStars="5"
-            android:stepSize="1.0" />
-
-        <EditText
-            android:id="@+id/nameInput"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/tv_review"
+            android:layout_width="327dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="30dp"
             android:layout_height="wrap_content"
-            android:hint="@string/your_name"
-            android:layout_marginTop="8dp" />
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/share_your_experiences_and_help_us_get_better"
+            android:textColor="@color/primary"
+            android:textSize="20sp"/>
+
 
         <EditText
             android:id="@+id/commentInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
             android:hint="@string/your_comment"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="100dp" />
+
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginStart="30dp"
+            android:theme="@style/RatingBar"
+            android:numStars="5"
+            android:stepSize="1.0" />
+
 
         <Button
             android:id="@+id/submitButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/submit"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/their_review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Their reviews!"
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/primary"
+            android:textSize="18sp"
+            android:layout_marginTop="70dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/reviewsRecyclerView"
@@ -51,8 +71,6 @@
             android:orientation="vertical" />
 
     </LinearLayout>
-
-
 
 
 </ScrollView>

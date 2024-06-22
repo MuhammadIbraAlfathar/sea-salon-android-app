@@ -1,32 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="8dp">
 
-    <TextView
-        android:id="@+id/reviewName"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/name_dummy"
-        android:textStyle="bold" />
+        app:cardCornerRadius="8dp"
+    android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="30dp"
+        app:cardElevation="4dp">
 
-    <TextView
-        android:id="@+id/reviewComment"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam porta, ipsum in sagittis imperdiet, justo urna fringilla massa, non vestibulum lacus ipsum non neque. Suspendisse eget tristique neque, vitae mollis leo. Vivamus sed enim gravida, consectetur metus quis, rhoncus felis. Aenean et lectus sed ipsum posuere pellentesque. Aenean fermentum, elit eu vehicula interdum, diam felis facilisis nisl, a interdum mauris odio quis diam. Phasellus sem nisl, cursus vel semper a, vestibulum vitae nibh. Nulla sapien risus, dictum sit amet tincidunt ac, scelerisque ut odio."
-        android:layout_marginTop="4dp" />
+        android:orientation="vertical">
 
-    <RatingBar
-        android:id="@+id/reviewRatingBar"
-        android:theme="@style/RatingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:numStars="5"
-        android:stepSize="1.0"
-        android:isIndicator="true"
-        android:layout_marginTop="4dp" />
+        <TextView
+            android:id="@+id/reviewName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/primary"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/name_dummy"
+            android:textStyle="bold" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/reviewComment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="5dp"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam porta, ipsum in sagittis imperdiet, justo urna fringilla massa, non vestibulum lacus ipsum non neque. Suspendisse eget tristique neque, vitae mollis leo. Vivamus sed enim gravida, consectetur metus quis, rhoncus felis. Aenean et lectus sed ipsum posuere pellentesque. Aenean fermentum, elit eu vehicula interdum, diam felis facilisis nisl, a interdum mauris odio quis diam. Phasellus sem nisl, cursus vel semper a, vestibulum vitae nibh. Nulla sapien risus, dictum sit amet tincidunt ac, scelerisque ut odio."
+            android:layout_marginTop="4dp" />
+
+        <RatingBar
+            android:id="@+id/reviewRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="47dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="6dp"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:stepSize="1.0"
+            android:theme="@style/RatingBar" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
+
+
+
+
