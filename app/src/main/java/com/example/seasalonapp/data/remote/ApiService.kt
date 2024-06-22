@@ -4,6 +4,7 @@ import MainServiceResponse
 import com.example.seasalonapp.data.model.request.LoginRequest
 import com.example.seasalonapp.data.model.request.ReviewRequest
 import com.example.seasalonapp.data.model.response.LoginResponse
+import com.example.seasalonapp.data.model.response.branchsalon.BranchSalonResponse
 import com.example.seasalonapp.data.model.response.review.ReviewResponse
 import retrofit2.Call
 import retrofit2.Response
@@ -33,4 +34,7 @@ interface ApiService {
     suspend fun getReviews(
         @Header("Authorization") token: String,
     ): ReviewResponse
+
+    @GET("api/branch-salon")
+    suspend fun getBranchSalon():BranchSalonResponse
 }

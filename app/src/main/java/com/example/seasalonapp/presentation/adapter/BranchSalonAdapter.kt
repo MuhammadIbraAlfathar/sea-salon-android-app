@@ -4,10 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.seasalonapp.data.model.response.branchsalon.BranchSalon
 import com.example.seasalonapp.databinding.ItemBranchSalonBinding
 import com.example.seasalonapp.databinding.ItemMainServicesBinding
 
-data class BranchSalon(val image: Int, val name: String, val address: String, val openingTime: String, val closingTime: String)
+
 class BranchSalonAdapter(private val branchs: List<BranchSalon>): RecyclerView.Adapter<BranchSalonAdapter.ViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -22,12 +23,12 @@ class BranchSalonAdapter(private val branchs: List<BranchSalon>): RecyclerView.A
         fun bind(branch: BranchSalon) {
 
             binding.apply {
-                binding.tvNameSalon.text = branch.name
-                binding.tvAddress.text = branch.address
-                binding.timeOpening.text = branch.openingTime
-                binding.timeClosing.text = branch.closingTime
+                binding.tvNameSalon.text = branch.branch_name
+                binding.tvAddress.text = branch.branch_address
+                binding.timeOpening.text = branch.opening_time
+                binding.timeClosing.text = branch.closing_time
                 Glide.with(itemView.context)
-                    .load(branch.image)
+                    .load(branch.picturePath)
                     .into(binding.ivBranchSalon)
             }
 

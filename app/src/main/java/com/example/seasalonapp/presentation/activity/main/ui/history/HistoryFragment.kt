@@ -8,9 +8,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.seasalonapp.R
 import com.example.seasalonapp.databinding.FragmentHistoryBinding
-import com.example.seasalonapp.databinding.FragmentHomeBinding
-import com.example.seasalonapp.presentation.adapter.BranchSalon
-import com.example.seasalonapp.presentation.adapter.BranchSalonAdapter
 import com.example.seasalonapp.presentation.adapter.History
 import com.example.seasalonapp.presentation.adapter.HistoryReservationAdapter
 

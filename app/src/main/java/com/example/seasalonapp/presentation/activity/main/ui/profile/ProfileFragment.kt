@@ -1,13 +1,14 @@
 package com.example.seasalonapp.presentation.activity.main.ui.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.example.seasalonapp.databinding.FragmentProfileBinding
+import com.example.seasalonapp.helper.PreferenceHelper
+import com.example.seasalonapp.presentation.activity.auth.LoginActivity
 
 class ProfileFragment : Fragment() {
 
@@ -22,15 +23,17 @@ class ProfileFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val notificationsViewModel =
-            ViewModelProvider(this).get(ProfileViewModel::class.java)
 
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        binding.btnLogout.setOnClickListener {
+            PreferenceHelper.clearAccessToken(requireContext())
+
+            val intent = Intent(requireContext(), LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            requireActivity().finish()
         }
         return root
     }

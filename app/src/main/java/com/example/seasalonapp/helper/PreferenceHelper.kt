@@ -21,6 +21,11 @@ object PreferenceHelper {
         return sharedPreferences.getString(ACCESS_TOKEN, null)
     }
 
+    fun clearAccessToken(context: Context) {
+        val sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+        sharedPreferences.edit().remove(ACCESS_TOKEN).apply()
+    }
+
     fun saveDataService(context: Context, service: List<Services>) {
         val sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
         val serviceJson = Gson().toJson(service)

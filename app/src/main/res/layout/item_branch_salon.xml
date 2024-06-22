@@ -35,10 +35,9 @@
             android:layout_marginTop="15dp"
             android:fontFamily="@font/poppins_medium"
             android:text="Salon XYZ"
-            android:textColor="@color/black"
+            android:textColor="@color/primary"
             android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/iv_branch_salon"
+            app:layout_constraintStart_toStartOf="@id/tv_address"
             app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -48,6 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:textSize="12sp"
+            android:layout_marginTop="6dp"
             android:text="Jl. May. Jen. DI. Panjaitan No.23, Cipinang Besar Sel., Kecamatan Jatinegara, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13340"
             android:textAlignment="textStart"
             app:layout_constraintStart_toEndOf="@+id/iv_branch_salon"
@@ -77,6 +77,8 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:src="@drawable/time_drawable"
             app:layout_constraintTop_toBottomOf="@id/tv_opening_time"
             app:layout_constraintStart_toStartOf="@id/tv_opening_time"/>
@@ -86,6 +88,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_time_opening"
             app:layout_constraintTop_toTopOf="@id/iv_time_opening"
             android:text="09:00"/>
@@ -95,6 +99,8 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:src="@drawable/time_drawable"
             app:layout_constraintTop_toBottomOf="@id/tv_closing_time"
             app:layout_constraintStart_toStartOf="@id/tv_closing_time"/>
@@ -105,6 +111,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_closing_opening"
             app:layout_constraintTop_toTopOf="@id/iv_closing_opening"
             android:text="09:00"/>
