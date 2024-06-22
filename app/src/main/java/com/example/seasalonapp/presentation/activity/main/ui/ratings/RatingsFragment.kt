@@ -7,20 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.example.seasalonapp.data.model.request.ReviewRequest
 import com.example.seasalonapp.data.repository.review.ReviewRepository
 import com.example.seasalonapp.databinding.FragmentRatingBinding
 import com.example.seasalonapp.helper.PreferenceHelper
-import com.example.seasalonapp.presentation.adapter.Review
 import com.example.seasalonapp.presentation.adapter.ReviewAdapter
-import com.example.seasalonapp.presentation.viewmodel.mainservices.HomeVieModelFactory
-import com.example.seasalonapp.presentation.viewmodel.mainservices.HomeViewModel
 import com.example.seasalonapp.presentation.viewmodel.review.ReviewModelFactory
 import com.example.seasalonapp.presentation.viewmodel.review.ReviewViewModel
-import okhttp3.internal.platform.android.BouncyCastleSocketAdapter.Companion.factory
 
 class RatingsFragment : Fragment() {
 
@@ -30,7 +26,7 @@ class RatingsFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    private val reviewsList = mutableListOf<Review>()
+//    private val reviewsList = mutableListOf<Review>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -60,8 +56,7 @@ class RatingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.reviewsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.reviewsRecyclerView.adapter = ReviewAdapter(reviewsList)
+
 
         val name = PreferenceHelper.getUser(requireContext())?.name
         val id_user = PreferenceHelper.getUser(requireContext())?.id
@@ -84,13 +79,20 @@ class RatingsFragment : Fragment() {
 
             if (name != null) {
                 if (name.isNotEmpty() && comment.isNotEmpty()) {
-                    reviewsList.add(Review(name, comment, rating))
+//                    reviewsList.add(Review(name, comment, rating))
                     binding.reviewsRecyclerView.adapter?.notifyDataSetChanged()
                     binding.commentInput.text.clear()
                     binding.ratingBar.rating = 0f
                 }
             }
         }
+
+        reviewViewModel.reviews.observe(viewLifecycleOwner, Observer { reviews ->
+            binding.reviewsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+            binding.reviewsRecyclerView.adapter = ReviewAdapter(reviews)
+        })
+
+        reviewViewModel.loadViewModel(token)
     }
 
     override fun onDestroyView() {

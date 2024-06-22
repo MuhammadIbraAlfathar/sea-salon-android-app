@@ -1,23 +1,38 @@
 package com.example.seasalonapp.presentation.viewmodel.review
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.seasalonapp.data.model.request.ReviewRequest
+import com.example.seasalonapp.data.model.response.review.Review
 import com.example.seasalonapp.data.repository.review.ReviewRepository
 import kotlinx.coroutines.launch
 
 class ReviewViewModel(private val repository: ReviewRepository): ViewModel() {
 
     val errorMessage = MutableLiveData<String>()
+    private val _reviews = MutableLiveData<List<Review>>()
+    val reviews: LiveData<List<Review>> get() = _reviews
     fun submitReview(token: String, reviewRequest: ReviewRequest) {
         viewModelScope.launch {
             try {
                 repository.submitReview(token, reviewRequest)
             } catch (e: Exception) {
                 Log.d("ERROR_SUBMIT_REVIEW", e.message.toString())
+            }
+        }
+    }
+
+    fun loadViewModel(token: String) {
+        viewModelScope.launch {
+            try {
+                val response = repository.getReviews(token)
+                _reviews.postValue(response.data.reviews)
+            } catch (e: Exception) {
+                Log.d("ERROR_GET_REVIEW", e.message.toString())
             }
         }
     }

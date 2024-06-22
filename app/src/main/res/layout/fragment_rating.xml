@@ -12,6 +12,8 @@
         android:orientation="vertical"
         android:padding="8dp">
 
+
+
         <TextView
             android:id="@+id/tv_review"
             android:layout_width="327dp"
@@ -23,6 +25,13 @@
             android:textColor="@color/primary"
             android:textSize="20sp"/>
 
+        <ImageView
+            android:layout_width="259dp"
+            android:layout_height="199dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/reviews_img"
+            android:layout_gravity="center"/>
+
 
         <EditText
             android:id="@+id/commentInput"
@@ -30,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:hint="@string/your_comment"
-            android:layout_marginTop="100dp" />
+            android:layout_marginTop="70dp" />
 
 
         <RatingBar
@@ -65,8 +74,9 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/reviewsRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="500dp"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="20dp"
             tools:listitem="@layout/item_review"
             android:orientation="vertical" />
 

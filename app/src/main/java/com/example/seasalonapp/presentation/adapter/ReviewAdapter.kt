@@ -4,11 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.seasalonapp.data.model.response.review.Review
 import com.example.seasalonapp.databinding.ItemMainServicesBinding
 import com.example.seasalonapp.databinding.ItemReviewBinding
 
 
-data class Review(val name: String, val comment: String, val rating: Float)
+
 class ReviewAdapter(private val review: List<Review>): RecyclerView.Adapter<ReviewAdapter.ViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -33,7 +34,7 @@ class ReviewAdapter(private val review: List<Review>): RecyclerView.Adapter<Revi
             binding.apply {
                 binding.reviewName.text = review.name
                 binding.reviewComment.text = review.comment
-                binding.reviewRatingBar.rating = review.rating
+                binding.reviewRatingBar.rating = review.rating.toFloat()
             }
 
         }

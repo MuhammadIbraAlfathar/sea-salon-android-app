@@ -13,7 +13,7 @@
 
     <style name="RatingBar">
         <item name="colorControlNormal">#B4B4B8 </item>
-        <item name="colorControlActivated">#FFC700</item>
+        <item name="colorControlActivated">@color/primary</item>
     </style>
 
     <style name="ShapeAppearanceOverlay.MyApp.Button" parent="">

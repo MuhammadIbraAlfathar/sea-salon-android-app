@@ -4,6 +4,7 @@ import MainServiceResponse
 import com.example.seasalonapp.data.model.request.LoginRequest
 import com.example.seasalonapp.data.model.request.ReviewRequest
 import com.example.seasalonapp.data.model.response.LoginResponse
+import com.example.seasalonapp.data.model.response.review.ReviewResponse
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
@@ -26,4 +27,10 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Body review: ReviewRequest
     )
+
+
+    @GET("api/get-review")
+    suspend fun getReviews(
+        @Header("Authorization") token: String,
+    ): ReviewResponse
 }
