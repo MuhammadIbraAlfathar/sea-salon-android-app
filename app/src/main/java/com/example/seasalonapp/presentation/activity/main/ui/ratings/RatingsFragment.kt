@@ -10,14 +10,22 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
+import com.example.seasalonapp.data.model.request.ReviewRequest
+import com.example.seasalonapp.data.repository.review.ReviewRepository
 import com.example.seasalonapp.databinding.FragmentRatingBinding
 import com.example.seasalonapp.helper.PreferenceHelper
 import com.example.seasalonapp.presentation.adapter.Review
 import com.example.seasalonapp.presentation.adapter.ReviewAdapter
+import com.example.seasalonapp.presentation.viewmodel.mainservices.HomeVieModelFactory
+import com.example.seasalonapp.presentation.viewmodel.mainservices.HomeViewModel
+import com.example.seasalonapp.presentation.viewmodel.review.ReviewModelFactory
+import com.example.seasalonapp.presentation.viewmodel.review.ReviewViewModel
+import okhttp3.internal.platform.android.BouncyCastleSocketAdapter.Companion.factory
 
 class RatingsFragment : Fragment() {
 
     private var _binding: FragmentRatingBinding? = null
+    private lateinit var reviewViewModel: ReviewViewModel
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -29,8 +37,14 @@ class RatingsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(RatingsViewModel::class.java)
+//        val dashboardViewModel =
+//            ViewModelProvider(this).get(RatingsViewModel::class.java)
+
+
+        val repository = ReviewRepository()
+        val factory = ReviewModelFactory(repository)
+        reviewViewModel = ViewModelProvider(this, factory)[ReviewViewModel::class.java]
+
 
         _binding = FragmentRatingBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -50,11 +64,22 @@ class RatingsFragment : Fragment() {
         binding.reviewsRecyclerView.adapter = ReviewAdapter(reviewsList)
 
         val name = PreferenceHelper.getUser(requireContext())?.name
+        val id_user = PreferenceHelper.getUser(requireContext())?.id
+        val token = PreferenceHelper.getAccessToken(requireContext()).toString()
 
         binding.submitButton.setOnClickListener {
 
             val comment = binding.commentInput.text.toString()
             val rating = binding.ratingBar.rating
+
+            val reviewRequest = ReviewRequest(
+                user_id = id_user!!.toInt(),
+                rating = rating.toInt(),
+                comment = comment,
+                name = name.toString()
+            )
+
+            reviewViewModel.submitReview(token, reviewRequest)
 
 
             if (name != null) {
