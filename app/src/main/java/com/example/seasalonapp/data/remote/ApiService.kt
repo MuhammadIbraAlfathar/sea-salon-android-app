@@ -2,6 +2,7 @@ package com.example.seasalonapp.data.remote
 
 import MainServiceResponse
 import com.example.seasalonapp.data.model.request.LoginRequest
+import com.example.seasalonapp.data.model.request.RegisterRequest
 import com.example.seasalonapp.data.model.request.ReviewRequest
 import com.example.seasalonapp.data.model.response.LoginResponse
 import com.example.seasalonapp.data.model.response.branchsalon.BranchSalonResponse
@@ -37,4 +38,10 @@ interface ApiService {
 
     @GET("api/branch-salon")
     suspend fun getBranchSalon():BranchSalonResponse
+
+
+    @POST("api/register")
+    suspend fun register(
+        @Body registerRequest: RegisterRequest
+    )
 }
