@@ -13,7 +13,8 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(private val repository: MainServiceRepository) : ViewModel() {
 
-    val dataResponse = MutableLiveData<List<Services>>()
+    val _dataResponse = MutableLiveData<List<Services>>()
+    val dataResponse: LiveData<List<Services>> = _dataResponse
     val errorMessage = MutableLiveData<String>()
 
     fun getDataServices(){
@@ -21,7 +22,7 @@ class HomeViewModel(private val repository: MainServiceRepository) : ViewModel()
             try {
                 val response = repository.getMainServices()
                 if (response.isSuccessful) {
-                    dataResponse.value = response.body()?.data?.data
+                    _dataResponse.value = response.body()?.data?.data?.toMutableList()
                 } else {
                     errorMessage.postValue("Failed")
                 }

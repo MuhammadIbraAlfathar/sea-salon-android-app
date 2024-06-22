@@ -1,5 +1,6 @@
 package com.example.seasalonapp.presentation.activity.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toolbar
@@ -11,6 +12,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.seasalonapp.R
 import com.example.seasalonapp.databinding.ActivityMainBinding
+import com.example.seasalonapp.helper.PreferenceHelper
+import com.example.seasalonapp.presentation.activity.auth.LoginActivity
+import com.example.seasalonapp.presentation.activity.auth.RegisterActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,6 +36,12 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home, R.id.navigation_ratings, R.id.navigation_profile, R.id.navigation_history
             )
         )
+
+        val token = PreferenceHelper.getAccessToken(this).toString()
+        if (token.isEmpty()) {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
 
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)

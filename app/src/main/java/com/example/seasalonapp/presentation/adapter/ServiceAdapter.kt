@@ -1,6 +1,8 @@
 package com.example.seasalonapp.presentation.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -9,8 +11,9 @@ import com.example.seasalonapp.databinding.ItemMainServicesBinding
 
 
 //data class Service(val image: Int, val service: String, val duration: String)
-class ServiceAdapter(): RecyclerView.Adapter<ServiceAdapter.ServiceViewHolder>() {
-    private var listServices = listOf<Services>()
+//private val onItemClick: (Services) -> Unit
+class ServiceAdapter(private val itemAdapterCallback: ItemAdapterCallback): RecyclerView.Adapter<ServiceAdapter.ServiceViewHolder>() {
+    private val listServices: MutableList<Services> = mutableListOf()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -22,20 +25,23 @@ class ServiceAdapter(): RecyclerView.Adapter<ServiceAdapter.ServiceViewHolder>()
 
     override fun onBindViewHolder(holder: ServiceViewHolder, position: Int) {
         val service = listServices[position]
-        holder.bind(service)
+        holder.bind(service, itemAdapterCallback)
+//        holder.itemView.setOnClickListener { onItemClick(service) }
     }
 
     override fun getItemCount(): Int {
         return listServices.size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateServices(newServices: List<Services>) {
-        listServices = newServices
+        listServices.clear()
+        listServices.addAll(newServices)
         notifyDataSetChanged()
     }
 
     class ServiceViewHolder(private val binding: ItemMainServicesBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(service: Services) {
+        fun bind(service: Services, itemAdapterCallback: ItemAdapterCallback) {
 
             binding.apply {
                 binding.tvDuration.text = service.duration.toString()
@@ -43,10 +49,17 @@ class ServiceAdapter(): RecyclerView.Adapter<ServiceAdapter.ServiceViewHolder>()
                 Glide.with(itemView.context)
                     .load(service.picturePath)
                     .into(binding.imageViewService)
+
+
+                root.setOnClickListener { itemAdapterCallback.onClick(service) }
             }
 
         }
 
+    }
+
+    interface ItemAdapterCallback {
+        fun onClick(data: Services)
     }
 
 

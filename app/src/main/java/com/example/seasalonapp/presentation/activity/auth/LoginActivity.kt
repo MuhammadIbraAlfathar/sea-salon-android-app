@@ -6,11 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.seasalonapp.R
 import com.example.seasalonapp.data.model.request.LoginRequest
 import com.example.seasalonapp.data.repository.auth.LoginRepository
 import com.example.seasalonapp.databinding.ActivityLoginBinding
@@ -30,7 +26,8 @@ class LoginActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        val token = PreferenceHelper.getAccessToken(this).toString()
+
+        val token = PreferenceHelper.getAccessToken(this)
         if (token != null) {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
@@ -38,31 +35,11 @@ class LoginActivity : AppCompatActivity() {
 
         val repository = LoginRepository()
         val factory = LoginViewModelFactory(repository)
-        viewModel = ViewModelProvider(this, factory).get(LoginViewModel::class.java)
+        viewModel = ViewModelProvider(this, factory)[LoginViewModel::class.java]
 
-        viewModel.loginResponse.observe(this, Observer { response ->
-            response?.let {
-                val token = it.data.access_token
-                val user = it.data.user
-                PreferenceHelper.saveAccessToken(this, token)
-                PreferenceHelper.saveUser(this, user)
-                Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
 
-                val savedUser = PreferenceHelper.getUser(this)
-                savedUser?.let {
-                    Log.d("Saved User", "Name: ${it.name}, Email: ${it.email}, ID: ${it.id}")
-                }
-            }
-        })
+        setupObserver()
 
-        viewModel.errorMessage.observe(this, Observer { message ->
-            message?.let {
-                Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
-                Log.d("ERR", it)
-            }
-        })
 
         binding.submitButton.setOnClickListener {
             val email = binding.inputEmail.text.toString()
@@ -73,6 +50,38 @@ class LoginActivity : AppCompatActivity() {
 
         binding.tvRegisterMessage.setOnClickListener {
             navigateToRegister()
+        }
+    }
+
+    private fun setupObserver() {
+        viewModel.loginResponse.observe(this) { response ->
+            response?.let { dataResponse ->
+                val setToken = dataResponse.data.access_token
+                val user = dataResponse.data.user
+
+                //save token
+                PreferenceHelper.saveAccessToken(this, setToken)
+
+                //save data user
+                PreferenceHelper.saveUser(this, user)
+
+
+                Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+
+                val savedUser = PreferenceHelper.getUser(this)
+                savedUser?.let {
+                    Log.d("Saved User", "Name: ${it.name}, Email: ${it.email}, ID: ${it.id}")
+                }
+            }
+        }
+
+        viewModel.errorMessage.observe(this) { message ->
+            message?.let {
+                Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+                Log.d("ERR", it)
+            }
         }
     }
 

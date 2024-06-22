@@ -12,10 +12,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.seasalonapp.R
+import com.example.seasalonapp.data.model.response.mainservice.Services
 import com.example.seasalonapp.data.repository.mainservices.MainServiceRepository
 import com.example.seasalonapp.databinding.FragmentHomeBinding
 import com.example.seasalonapp.helper.PreferenceHelper
 import com.example.seasalonapp.presentation.activity.branch_salon.BranchSalonActivity
+import com.example.seasalonapp.presentation.activity.detail.DetailServicesActivity
 import com.example.seasalonapp.presentation.activity.reservation.ReservationActivity
 import com.example.seasalonapp.presentation.adapter.ImageSlideAdapter
 import com.example.seasalonapp.presentation.adapter.ServiceAdapter
@@ -24,7 +26,7 @@ import com.example.seasalonapp.presentation.viewmodel.mainservices.HomeViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @Suppress("UNREACHABLE_CODE")
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), ServiceAdapter.ItemAdapterCallback {
 
     private var _binding: FragmentHomeBinding? = null
 
@@ -32,8 +34,8 @@ class HomeFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
     private lateinit var homeViewModel: HomeViewModel
-    private val serviceAdapter = ServiceAdapter()
-
+//    private lateinit var serviceAdapter: ServiceAdapter
+    private val serviceAdapter = ServiceAdapter(this)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -54,6 +56,21 @@ class HomeFragment : Fragment() {
         binding.toolBar.toolbar.visibility = View.GONE
 
         val layoutManager = GridLayoutManager(context, 2)
+
+//        serviceAdapter = ServiceAdapter { services ->
+//            val intent = Intent(activity, DetailServicesActivity::class.java).apply {
+//                putExtra("SERVICE_ID", services.id)
+//                putExtra("SERVICE_IMG", services.picturePath)
+//                putExtra("SERVICE_NAME", services.services_name)
+//                putExtra("SERVICE_DURATION", services.duration.toString())
+//                putExtra("SERVICE_DESCRIPTION", services.description)
+//            }
+//
+//            startActivity(intent)
+//        }
+
+
+
 
 
         binding.rcList.layoutManager = layoutManager
@@ -90,17 +107,26 @@ class HomeFragment : Fragment() {
     private fun setupObserver() {
         homeViewModel.dataResponse.observe(viewLifecycleOwner) { data ->
             serviceAdapter.updateServices(data)
+            PreferenceHelper.saveDataService(requireContext(), data)
         }
         homeViewModel.errorMessage.observe(viewLifecycleOwner, Observer { message ->
             message?.let {
-                Toast.makeText(requireContext(),it, Toast.LENGTH_SHORT).show()
                 Log.d("ERR", it)
             }
         })
     }
 
+
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onClick(data: Services) {
+        val detail = Intent(activity, DetailServicesActivity::class.java).apply {
+            putExtra("dataService", data)
+        }
+        startActivity(detail)
     }
 }
