@@ -27,6 +27,11 @@ class ProfileFragment : Fragment() {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        val dataUser = PreferenceHelper.getUser(requireContext())
+
+        binding.userName.text = dataUser?.name.toString()
+        binding.email.text = dataUser?.email.toString()
+
         binding.btnLogout.setOnClickListener {
             PreferenceHelper.clearAccessToken(requireContext())
 

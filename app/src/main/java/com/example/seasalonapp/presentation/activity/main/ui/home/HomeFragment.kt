@@ -91,11 +91,6 @@ class HomeFragment : Fragment(), ServiceAdapter.ItemAdapterCallback {
         val name = PreferenceHelper.getUser(requireContext())?.name
         binding.tvName.text = name.toString()
 
-        binding.reservationButton.setOnClickListener {
-            val intent = Intent(activity, ReservationActivity::class.java)
-            startActivity(intent)
-        }
-
         binding.branchsButton.setOnClickListener {
             val intent = Intent(activity, BranchSalonActivity::class.java)
             startActivity(intent)
