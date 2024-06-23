@@ -95,7 +95,7 @@ class ReservationActivity : AppCompatActivity() {
 
         binding.btnSubmitReservation.setOnClickListener {
             val userName = binding.inputName.text.toString()
-            val phoneNumber = binding.inputName.text.toString()
+            val phoneNumber = binding.inputPhone.text.toString()
             val services = dataService?.services_name.toString()
             val date = binding.tvSelectedDate.text.toString()
             val timeStart = binding.tvSelectedTimeStart.text.toString()

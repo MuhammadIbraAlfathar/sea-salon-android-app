@@ -1,5 +1,8 @@
 package com.example.seasalonapp.data.model.response.reservation
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
 data class HistoryReservationResponse(
     val meta: Meta,
     val data: ReservationData
@@ -15,6 +18,7 @@ data class ReservationData(
     val data_reservation: List<Reservation>
 )
 
+@Parcelize
 data class Reservation(
     val id: Int,
     val user_id: Int,
@@ -26,4 +30,4 @@ data class Reservation(
     val time_end: String,
     val created_at: String,
     val updated_at: String
-)
+): Parcelable

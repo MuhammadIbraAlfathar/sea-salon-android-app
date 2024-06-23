@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.seasalonapp.data.model.response.mainservice.Services
 import com.example.seasalonapp.data.model.response.reservation.Reservation
 import com.example.seasalonapp.databinding.ItemHistoryReservationBinding
 import java.text.SimpleDateFormat
@@ -11,7 +12,7 @@ import java.util.Date
 import java.util.Locale
 
 
-class HistoryReservationAdapter(private val history: List<Reservation>): RecyclerView.Adapter<HistoryReservationAdapter.ViewHolder>() {
+class HistoryReservationAdapter(private val itemAdapterCallback: ItemAdapterCallback, private val history: List<Reservation>): RecyclerView.Adapter<HistoryReservationAdapter.ViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -21,7 +22,7 @@ class HistoryReservationAdapter(private val history: List<Reservation>): Recycle
     }
 
     class ViewHolder(private val binding: ItemHistoryReservationBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(history: Reservation) {
+        fun bind(history: Reservation, itemAdapterCallback: ItemAdapterCallback) {
 
             binding.apply {
                 binding.serviceHistory.text = history.services
@@ -29,6 +30,8 @@ class HistoryReservationAdapter(private val history: List<Reservation>): Recycle
                 binding.timeStartHistory.text = history.time_start
                 binding.dateHistory.text = history.date
                 binding.tvCreated.text = formatDate(history.created_at)
+
+                root.setOnClickListener { itemAdapterCallback.onClick(history) }
             }
 
         }
@@ -46,10 +49,14 @@ class HistoryReservationAdapter(private val history: List<Reservation>): Recycle
 
     override fun onBindViewHolder(holder: HistoryReservationAdapter.ViewHolder, position: Int) {
         val history = history[position]
-        holder.bind(history)
+        holder.bind(history, itemAdapterCallback)
     }
 
     override fun getItemCount(): Int {
         return history.size
+    }
+
+    interface ItemAdapterCallback {
+        fun onClick(data: Reservation)
     }
 }
