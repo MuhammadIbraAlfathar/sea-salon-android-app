@@ -5,11 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.seasalonapp.R
+import com.example.seasalonapp.data.repository.reservation.ReservationRepository
 import com.example.seasalonapp.databinding.FragmentHistoryBinding
-import com.example.seasalonapp.presentation.adapter.History
+import com.example.seasalonapp.helper.PreferenceHelper
 import com.example.seasalonapp.presentation.adapter.HistoryReservationAdapter
+import com.example.seasalonapp.presentation.viewmodel.reservation.ReservationViewModel
+import com.example.seasalonapp.presentation.viewmodel.reservation.ReservationViewModelFactory
 
 class HistoryFragment : Fragment() {
 
@@ -19,10 +22,13 @@ class HistoryFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    private lateinit var viewModel: ReservationViewModel
+    private lateinit var reservationAdapter: HistoryReservationAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentHistoryBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -34,16 +40,19 @@ class HistoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val history = listOf(
-            History(R.drawable.img_1, "Haircut and Stylish", "19:00", "20:00"),
-            History(R.drawable.img_2, "Manicure Padicure", "19:00", "20:00"),
-            History(R.drawable.img_3, "Facial Treatment", "19:00", "20:00"),
-        )
+        val repository = ReservationRepository()
+        val viewModelFactory = ReservationViewModelFactory(repository)
+        viewModel = ViewModelProvider(this, viewModelFactory)[ReservationViewModel::class.java]
 
+        val userId = PreferenceHelper.getUser(requireContext())?.id
+        val token = PreferenceHelper.getAccessToken(requireContext()).toString()
+
+        viewModel.fetchReservations(token, userId!!)
         binding.rcList.layoutManager = LinearLayoutManager(context)
-        binding.rcList.adapter = HistoryReservationAdapter(history)
+
+        viewModel.reservations.observe(viewLifecycleOwner) { reservation ->
+            reservationAdapter = HistoryReservationAdapter(reservation)
+            binding.rcList.adapter = reservationAdapter
+        }
     }
-
-
-
 }
