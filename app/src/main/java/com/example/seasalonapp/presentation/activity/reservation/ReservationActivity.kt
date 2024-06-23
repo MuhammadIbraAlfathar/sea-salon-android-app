@@ -1,37 +1,47 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.seasalonapp.presentation.activity.reservation
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.TimePicker
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.example.seasalonapp.R
+import com.example.seasalonapp.data.model.request.ReservationRequest
 import com.example.seasalonapp.data.model.response.mainservice.Services
-import com.example.seasalonapp.databinding.ActivityLoginBinding
+import com.example.seasalonapp.data.repository.reservation.ReservationRepository
 import com.example.seasalonapp.databinding.ActivityReservationBinding
+import com.example.seasalonapp.helper.PreferenceHelper
+import com.example.seasalonapp.presentation.viewmodel.reservation.ReservationViewModel
+import com.example.seasalonapp.presentation.viewmodel.reservation.ReservationViewModelFactory
 import java.util.Calendar
 
+@SuppressLint("DefaultLocale")
 class ReservationActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityReservationBinding
     private var dataService: Services? = null
+    private lateinit var viewModel: ReservationViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityReservationBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
+
+        val repository = ReservationRepository()
+        val factory = ReservationViewModelFactory(repository)
+        viewModel = ViewModelProvider(this, factory)[ReservationViewModel::class.java]
+
+        val token = PreferenceHelper.getAccessToken(this).toString()
 
         dataService = intent.getParcelableExtra("dataService")
 
@@ -80,7 +90,46 @@ class ReservationActivity : AppCompatActivity() {
             timePicker.show()
         }
 
+        val userId = PreferenceHelper.getUser(this)?.id
+
+
+        binding.btnSubmitReservation.setOnClickListener {
+            val userName = binding.inputName.text.toString()
+            val phoneNumber = binding.inputName.text.toString()
+            val services = dataService?.services_name.toString()
+            val date = binding.tvSelectedDate.text.toString()
+            val timeStart = binding.tvSelectedTimeStart.text.toString()
+            val timeEnd = binding.tvSelectedTimeEnd.text.toString()
+
+
+            val reservation = ReservationRequest(
+                user_id = userId!!,
+                user_name = userName,
+                phone_number = phoneNumber,
+                services = services,
+                date = date,
+                time_start = timeStart,
+                time_end = timeEnd
+            )
+
+            viewModel.reservation(token, reservation)
+
+            val intent = Intent(this, SuccessReservationActivity::class.java)
+            startActivity(intent)
+
+
+        }
+
+
+        viewModel.errorMessage.observe(this) {message ->
+            message?.let {
+                Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+                Log.d("ERROR_REGISTER", it)
+            }
+        }
+
     }
+
 
     private val timePickerEndListener =
         TimePickerDialog.OnTimeSetListener { _, hourOfDay, minute ->

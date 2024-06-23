@@ -3,6 +3,7 @@ package com.example.seasalonapp.data.remote
 import MainServiceResponse
 import com.example.seasalonapp.data.model.request.LoginRequest
 import com.example.seasalonapp.data.model.request.RegisterRequest
+import com.example.seasalonapp.data.model.request.ReservationRequest
 import com.example.seasalonapp.data.model.request.ReviewRequest
 import com.example.seasalonapp.data.model.response.LoginResponse
 import com.example.seasalonapp.data.model.response.branchsalon.BranchSalonResponse
@@ -43,5 +44,12 @@ interface ApiService {
     @POST("api/register")
     suspend fun register(
         @Body registerRequest: RegisterRequest
+    )
+
+
+    @POST("api/create-reservation")
+    suspend fun reservation(
+        @Header ("Authorization") token: String,
+        @Body reservationRequest: ReservationRequest
     )
 }
