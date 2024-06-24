@@ -11,16 +11,16 @@ An application to book services available at SEA Salon, in addition to this appl
 ## Screenshots Apps
 
 <p float="left">
-  <img src="https://github.com/MuhammadIbraAlfathar/assets/blob/main/Screenshot_2024-06-24-11-37-04-256_com.example.seasalonapp.jpg?raw=true" width="100" />
-  <img src="https://github.com/MuhammadIbraAlfathar/assets/blob/main/Screenshot_2024-06-24-12-00-36-271_com.example.seasalonapp.jpg?raw=true" width="100" /> 
-  <img src="https://github.com/MuhammadIbraAlfathar/assets/blob/main/_storage_emulated_0_DCIM_Screenshots_Screenshot_2024-06-24-12-00-42-788_com.example.seasalonapp.jpg?raw=true" width="100" />
-  <img src="https://github.com/MuhammadIbraAlfathar/assets/blob/main/Screenshot_2024-06-24-11-30-53-683_com.example.seasalonapp.jpg?raw=true" width="100" />
-  <img src="https://github.com/MuhammadIbraAlfathar/assets/blob/main/Screenshot_2024-06-24-11-31-14-298_com.example.seasalonapp.jpg?raw=true" width="100" />
-  <img src="https://github.com/MuhammadIbraAlfathar/assets/blob/main/Screenshot_2024-06-24-11-31-28-193_com.example.seasalonapp.jpg?raw=true" width="100" />
-  <img src="https://github.com/MuhammadIbraAlfathar/assets/blob/main/Screenshot_2024-06-24-11-33-20-895_com.example.seasalonapp.jpg?raw=true" width="100" />
-  <img src="https://github.com/MuhammadIbraAlfathar/assets/blob/main/Screenshot_2024-06-24-11-33-23-881_com.example.seasalonapp.jpg?raw=true" width="100" />
-  <img src="https://github.com/MuhammadIbraAlfathar/assets/blob/main/Screenshot_2024-06-24-11-31-20-150_com.example.seasalonapp.jpg?raw=true" width="100" />
-  <img src="https://github.com/MuhammadIbraAlfathar/assets/blob/main/Screenshot_2024-06-24-11-31-23-396_com.example.seasalonapp.jpg?raw=true" width="100" />
+  <img src="https://github.com/MuhammadIbraAlfathar/assets/blob/main/Screenshot_2024-06-24-11-37-04-256_com.example.seasalonapp.jpg?raw=true" width="140" />
+  <img src="https://github.com/MuhammadIbraAlfathar/assets/blob/main/Screenshot_2024-06-24-12-00-36-271_com.example.seasalonapp.jpg?raw=true" width="140" /> 
+  <img src="https://github.com/MuhammadIbraAlfathar/assets/blob/main/_storage_emulated_0_DCIM_Screenshots_Screenshot_2024-06-24-12-00-42-788_com.example.seasalonapp.jpg?raw=true" width="140" />
+  <img src="https://github.com/MuhammadIbraAlfathar/assets/blob/main/Screenshot_2024-06-24-11-30-53-683_com.example.seasalonapp.jpg?raw=true" width="140" />
+  <img src="https://github.com/MuhammadIbraAlfathar/assets/blob/main/Screenshot_2024-06-24-11-31-14-298_com.example.seasalonapp.jpg?raw=true" width="140" />
+  <img src="https://github.com/MuhammadIbraAlfathar/assets/blob/main/Screenshot_2024-06-24-11-31-28-193_com.example.seasalonapp.jpg?raw=true" width="140" />
+  <img src="https://github.com/MuhammadIbraAlfathar/assets/blob/main/Screenshot_2024-06-24-11-33-20-895_com.example.seasalonapp.jpg?raw=true" width="140" />
+  <img src="https://github.com/MuhammadIbraAlfathar/assets/blob/main/Screenshot_2024-06-24-11-33-23-881_com.example.seasalonapp.jpg?raw=true" width="140" />
+  <img src="https://github.com/MuhammadIbraAlfathar/assets/blob/main/Screenshot_2024-06-24-11-31-20-150_com.example.seasalonapp.jpg?raw=true" width="140" />
+  <img src="https://github.com/MuhammadIbraAlfathar/assets/blob/main/Screenshot_2024-06-24-11-31-23-396_com.example.seasalonapp.jpg?raw=true" width="140" />
 </p>
 
 
