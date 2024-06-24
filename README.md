@@ -10,7 +10,15 @@ An application to book services available at SEA Salon, in addition to this appl
 
 ## Screenshots Apps
 
-![App Screenshot](https://github.com/MuhammadIbraAlfathar/assets/blob/main/Screenshot_2024-06-24-11-37-04-256_com.example.seasalonapp.jpg?raw=true) | ![App Screenshot](https://github.com/MuhammadIbraAlfathar/assets/blob/main/Screenshot_2024-06-24-11-30-53-683_com.example.seasalonapp.jpg?raw=true) | ![App Screenshot](https://github.com/MuhammadIbraAlfathar/assets/blob/main/Screenshot_2024-06-24-11-31-14-298_com.example.seasalonapp.jpg?raw=true) | ![App Screenshot](https://github.com/MuhammadIbraAlfathar/assets/blob/main/Screenshot_2024-06-24-11-31-45-228_com.example.seasalonapp.jpg?raw=true) | ![App Screenshot](https://github.com/MuhammadIbraAlfathar/assets/blob/main/Screenshot_2024-06-24-11-31-28-193_com.example.seasalonapp.jpg?raw=true) | ![App Screenshot](https://github.com/MuhammadIbraAlfathar/assets/blob/main/Screenshot_2024-06-24-11-33-20-895_com.example.seasalonapp.jpg?raw=true) | ![App Screenshot](https://github.com/MuhammadIbraAlfathar/assets/blob/main/Screenshot_2024-06-24-11-33-23-881_com.example.seasalonapp.jpg?raw=true) | ![App Screenshot](https://github.com/MuhammadIbraAlfathar/assets/blob/main/Screenshot_2024-06-24-11-31-20-150_com.example.seasalonapp.jpg?raw=true) | ![App Screenshot](https://github.com/MuhammadIbraAlfathar/assets/blob/main/Screenshot_2024-06-24-11-31-23-396_com.example.seasalonapp.jpg?raw=true)
+<p float="left">
+  <img src="https://github.com/MuhammadIbraAlfathar/assets/blob/main/Screenshot_2024-06-24-11-37-04-256_com.example.seasalonapp.jpg?raw=true" width="100" />
+  <img src="https://i.imgur.com/OAaRc94.png" width="100" /> 
+  <img src="https://i.imgur.com/CeNKE5M.png" width="100" />
+  <img src="https://i.imgur.com/oSB5G6K.png" width="100" />
+  <img src="https://i.imgur.com/ZeYjsIz.png" width="100" />
+  <img src="https://i.imgur.com/JkrGYRT.png" width="100" />
+</p>
+
 
 
 
