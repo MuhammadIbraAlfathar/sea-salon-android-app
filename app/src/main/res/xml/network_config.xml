@@ -3,6 +3,6 @@
     <domain-config cleartextTrafficPermitted="true">
 
         <!--        10.0.2.2-->
-        <domain includeSubdomains="true">867b-103-186-35-2.ngrok-free.app</domain>
+        <domain includeSubdomains="true">9395-103-186-35-2.ngrok-free.app</domain>
     </domain-config>
 </network-security-config>
